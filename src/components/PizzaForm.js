@@ -1,4 +1,6 @@
 import React from 'react'
+import Home from './Home'
+import { NavLink } from 'react-router-dom'
 
 export default function PizzaForm(props) {
     const{
@@ -6,7 +8,10 @@ export default function PizzaForm(props) {
         submit,
         change,
         errors,
+        disabled
     } = props
+    
+    
 
     const onSubmit = evt => {
         evt.preventDefault()
@@ -20,7 +25,11 @@ export default function PizzaForm(props) {
     }
 
     return (
-        <form className= 'form container' id='pizza-form'>
+        <div>
+        <NavLink to ='/'> <button>Home</button></NavLink >
+       
+
+        <form className= 'form container' id='pizza-form' onSubmit={onSubmit}>
             <div className='form-group submit'>
             <h1>Order a Pizza</h1>
 
@@ -43,8 +52,8 @@ export default function PizzaForm(props) {
             </div>
             
         <div className='form-group select'>    
-            <label>Role
-              <select
+            <label>Size
+              <select id='size-dropdown'
                 onChange={onChange}
                 value={values.size}
                 name='size'
@@ -97,7 +106,7 @@ export default function PizzaForm(props) {
         <div className='form-group inputs'>
             <label id='special-text'>Special Instructions
                 <input
-                    value={values.name}
+                    value={values.special}
                     onChange={onChange}
                     type='input'
                     name='special'
@@ -105,8 +114,9 @@ export default function PizzaForm(props) {
             </label>
         </div>
 
-        <button id="order-button">Order Pizza</button>
-        
+        <button type='submit' id="order-button">Order Pizza</button>
+
     </form>
+    </div>
   )
 }
