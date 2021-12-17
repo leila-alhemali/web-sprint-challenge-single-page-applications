@@ -9,6 +9,7 @@ describe('Pizza Orders', () => {
     })
 
     const nameInput = () => cy.get('input[name=name]');
+    const specialInput = () => cy.get('input[name=special]');
     const topping1 = () => cy.get('[id="topping1"');
     const topping2 = () => cy.get('[id="topping2"');
     const submitBtn = () => cy.get('[id="order-button"]')
@@ -19,6 +20,12 @@ describe('Pizza Orders', () => {
                 .should('have.value', '')
                 .type('NAME')
                 .should('have.value', 'NAME')
+        })
+        it('can type in the input', () => {
+            specialInput()
+                .should('have.value', '')
+                .type('extra sauce')
+                .should('have.value', 'extra sauce')
         })
     })
 
