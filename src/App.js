@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import {Route, Link, Switch, NavLink} from 'react-router-dom';
-import { BrowserRouter as Router } from "react-router-dom";
 import * as yup from 'yup';
 import axios from 'axios';
 
@@ -8,7 +7,7 @@ import axios from 'axios';
 import Home from './components/Home';
 import Pizza from './components/Pizza';
 import PizzaForm from './components/PizzaForm';
-import formSchema from './components/formSchema';
+import schema from './components/formSchema';
 
 
 const initialFormValues = {
@@ -44,11 +43,10 @@ const postPizzaOrder = pizzaOrder => {
       setPizza(resp.data)
       console.log(pizza)
     }).catch(err => console.error(err))
-    .finally(() => setFormValues({initialFormValues}))
+    .finally(() => setFormValues(initialFormValues))
 }
 
-const validate = (name, value) => 
-{  yup.reach(formSchema, name)
+const validate = (name, value) => {  yup.reach(schema, name)
     .validate(value)
     .then(() => setFormErrors({...formErrors, [name]: ''}))
     .catch(err => setFormErrors({...formErrors, [name]: err.errors[0]}))
@@ -85,7 +83,7 @@ const formSubmit = () => {
     <>
       <h1>BloomTech Eats</h1>
       <p>Free pizza for hungry programmers</p>
-    <Router>
+    
     <Switch>
       <Route exact path='/'>
           <Home 
@@ -101,7 +99,7 @@ const formSubmit = () => {
                     />
       </Route>
     </Switch>
-    </Router>
+    
 
     </>
   );

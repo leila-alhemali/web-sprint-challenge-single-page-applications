@@ -70,7 +70,7 @@ export default function PizzaForm(props) {
         <div className='form-group checkboxes'>
             <h4>Toppings</h4>
                 <label>Pesto
-                    <input
+                    <input id='topping1'
                         type= 'checkbox'
                         name= 'topping1'
                         checked={values.topping1}
@@ -78,7 +78,7 @@ export default function PizzaForm(props) {
                     />
                 </label>
                 <label>Red Bell Pepper
-                    <input
+                    <input id='topping2'
                         type= 'checkbox'
                         name= 'topping2'
                         checked={values.topping2}
@@ -102,7 +102,7 @@ export default function PizzaForm(props) {
                     />
                 </label>
 
-        </div>
+            </div>
         <div className='form-group inputs'>
             <label id='special-text'>Special Instructions
                 <input
@@ -115,7 +115,6 @@ export default function PizzaForm(props) {
         </div>
 
         <button type='submit' id="order-button">Order Pizza</button>
-
     </form>
     </div>
   )
